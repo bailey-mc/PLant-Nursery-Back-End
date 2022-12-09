@@ -11,6 +11,7 @@ if(process.env.PORT){
 	PORT = process.env.PORT
 }
 
+//middleware
 app.use(express.json());
 app.use(cors());
 
