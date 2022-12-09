@@ -15,10 +15,10 @@ app.use(express.json());
 app.use(cors());
 
 //route for heroku
-app.get('/', (req, res)=> {
-  console.log('helloooo');
-  res.send('Hello World!');
-
+app.get('/', (req, res) => {
+  Plant.find({}, (err, foundPlants) => {
+    res.json(foundPlants)
+  })
 })
 
 // create route
