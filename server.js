@@ -16,7 +16,9 @@ app.use(cors());
 
 //route for heroku
 app.get('/', (req, res)=> {
+  console.log('helloooo');
   res.send('Hello World!');
+
 })
 
 // create route
