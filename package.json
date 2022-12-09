@@ -1,0 +1,23 @@
+{
+  "name": "plant-nursery-back-end",
+  "version": "1.0.0",
+  "description": "FULLSTACK MERN APP",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/texasmami/PLant-Nursery-Back-End.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/texasmami/PLant-Nursery-Back-End/issues"
+  },
+  "homepage": "https://github.com/texasmami/PLant-Nursery-Back-End#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
