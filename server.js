@@ -8,6 +8,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// seed route
+const plantSeed = require('./models/plantData.js')
+
+app.get('/seed', (req, res) => {
+  Plant.create(plantSeed, (error, data) => {
+    res.send('database seeded with: ' + data)
+  })
+})
+
 // create route
 app.post('/plantnursery', (req, res) => {
   Plant.create(req.body, (err, createdPlant) => {
