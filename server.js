@@ -22,6 +22,15 @@ app.get('/', (req, res) => {
   
 })
 
+// seed route
+const plantSeed = require('./models/plantData.js')
+
+app.get('/seed', (req, res) => {
+  Plant.create(plantSeed, (error, data) => {
+    res.send('database seeded with: ' + data)
+  })
+})
+
 // create route
 app.post('/plantnursery', (req, res) => {
   Plant.create(req.body, (err, createdPlant) => {
