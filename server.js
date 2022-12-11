@@ -5,8 +5,22 @@ const Plant = require('./models/plantSchema.js')
 
 const app = express();
 
+//port stuff for heroku
+let PORT = 3001;
+if(process.env.PORT){
+	PORT = process.env.PORT
+}
+
+//middleware
 app.use(express.json());
 app.use(cors());
+
+//route for heroku
+app.get('/', (req, res) => {
+  console.log('hiii');
+  res.send('hi')
+  
+})
 
 // seed route
 const plantSeed = require('./models/plantData.js')
@@ -53,6 +67,6 @@ mongoose.connection.once('open', () => {
 });
 
 // PORT
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log('listening...')
 })
