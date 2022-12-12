@@ -11,7 +11,11 @@ const Plant = require('../models/plantSchema.js')
 // create route
 router.post('/', (req, res) => {
     Plant.create(req.body, (err, createdPlant) => {
-      res.json(createdPlant)
+        if (err) {
+            res.send(err)
+          } else {
+            res.json(createdPlant)
+          }
       
     })
   })
@@ -20,8 +24,11 @@ router.post('/', (req, res) => {
   router.get('/', (req, res) => {
     Plant.find({}, (err, foundPlants) => {
       console.log(foundPlants);
-      // res.send('/plantnursery')
-      res.json(foundPlants)
+      if (err) {
+        res.send(err)
+      } else {
+        res.json(foundPlants)
+      }
     })
   })
   
