@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config()
 // const Plant = require('./models/plantSchema.js')
+const app = express();
 
 
 //port stuff for heroku
@@ -29,9 +30,8 @@ app.use(cors(corsOptions))
 
 
 //middleware
-const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 //////////////////////////
 //CONTROLLERS
