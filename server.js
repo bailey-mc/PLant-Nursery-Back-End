@@ -25,16 +25,18 @@ app.get('/', (req, res) => {
 // seed route
 const plantSeed = require('./models/plantData.js')
 
-app.get('/seed', (req, res) => {
-  Plant.create(plantSeed, (error, data) => {
-    res.send('database seeded with: ' + data)
+
+
+// create route
+app.post('/plantnursery/new', (req, res) => {
+  Plant.create(req.body, (err, createdPlant) => {
+    res.json(createdPlant)
   })
 })
 
-// create route
-app.post('/plantnursery', (req, res) => {
-  Plant.create(req.body, (err, createdPlant) => {
-    res.json(createdPlant)
+app.get('/seed', (req, res) => {
+  Plant.create(plantSeed, (error, data) => {
+    res.send('database seeded with: ' + data)
   })
 })
 
