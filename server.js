@@ -15,17 +15,16 @@ if(process.env.PORT){
 app.use(express.json());
 app.use(cors());
 
-//route for heroku
-app.get('/', (req, res) => {
-  console.log('hiii');
-  res.send('hi')
-  
-})
-
-// seed route
-const plantSeed = require('./models/plantData.js')
 
 
+// // seed route
+// const plantSeed = require('./models/plantData.js')
+
+// app.get('/seed', (req, res) => {
+//   Plant.create(plantSeed, (error, data) => {
+//     res.send('database seeded with: ' + data)
+//   })
+// })
 
 // create route
 app.post('/plantnursery/new', (req, res) => {
@@ -34,10 +33,11 @@ app.post('/plantnursery/new', (req, res) => {
   })
 })
 
-app.get('/seed', (req, res) => {
-  Plant.create(plantSeed, (error, data) => {
-    res.send('database seeded with: ' + data)
-  })
+//route for heroku
+app.get('/', (req, res) => {
+  console.log('hiii');
+  res.send('hi')
+  
 })
 
 // read route
