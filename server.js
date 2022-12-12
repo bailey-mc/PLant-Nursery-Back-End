@@ -33,16 +33,13 @@ app.use(cors());
 // app.get('/', (req, res) => {
 //   console.log('hiii');
 //   res.send('hi')
-  
 // })
 
 // create route
 app.post('/plantnursery/new', (req, res) => {
   Plant.create(req.body, (err, createdPlant) => {
     res.json(createdPlant)
-    if (err){
-      console.log(err);
-    }
+    
   })
 })
 
