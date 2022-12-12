@@ -30,11 +30,11 @@ app.use(cors());
 // })
 
 //route for heroku
-app.get('/', (req, res) => {
-  console.log('hiii');
-  res.send('hi')
+// app.get('/', (req, res) => {
+//   console.log('hiii');
+//   res.send('hi')
   
-})
+// })
 
 // create route
 app.post('/plantnursery/new', (req, res) => {
