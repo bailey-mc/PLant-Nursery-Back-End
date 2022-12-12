@@ -1,9 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config()
-// const Plant = require('./models/plantSchema.js')
-
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
+const Plant = require("./models/plantSchema.js");
 
 //port stuff for heroku
 // let PORT = 3001;
@@ -11,7 +10,6 @@ require('dotenv').config()
 // 	PORT = process.env.PORT
 // }
 let PORT = process.env.PORT || 3001;
-
 
 //middleware
 const app = express();
@@ -21,29 +19,24 @@ app.use(cors());
 //////////////////////////
 //CONTROLLERS
 ////////////////////////
-const plantController = require('./controllers/plantroutes')
-app.use('/plantnursery', plantController)
+const plantController = require("./controllers/plantroutes");
+app.use("/plantnursery", plantController);
 
 ///////////////////////////
 //ROUTES
 ///////////////////////////
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
-
-//error message for page that does not exist
-app.use((req,res, next)=> {
-  res.send('404 page not found')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 // seed route
-const plantSeed = require('./models/plantData.js')
+const plantSeed = require("./models/plantData.js");
 
-app.get('/seed', (req, res) => {
+app.get("/seed", (req, res) => {
   Plant.create(plantSeed, (error, data) => {
-    res.send('database seeded with: ' + data)
-  })
-})
+    res.send("database seeded with: " + data);
+  });
+});
 
 //route for heroku
 // app.get('/', (req, res) => {
@@ -55,7 +48,7 @@ app.get('/seed', (req, res) => {
 // app.post('/plantnursery/new', (req, res) => {
 //   Plant.create(req.body, (err, createdPlant) => {
 //     res.json(createdPlant)
-    
+
 //   })
 // })
 
@@ -83,12 +76,23 @@ app.get('/seed', (req, res) => {
 //   })
 // })
 
+//error message for page that does not exist
+// app.use((req, res, next) => {
+//   res.send("404 page not found");
+// });
+
 // LISTENER
-mongoose.connect('mongodb+srv://musiclover:bobdylaN%2196@mymusic.wef1hdo.mongodb.net/?retryWrites=true&w=majority', ()=>{
-	console.log('connected to mongo');
-})
+mongoose.connect(
+  "mongodb+srv://musiclover:bobdylaN%2196@mymusic.wef1hdo.mongodb.net/?retryWrites=true&w=majority",
+  () => {
+    console.log("connected to mongo");
+  }
+);
+// mongoose.connect("mongodb://localhost:27017/plantnursery-MERN", () => {
+//   console.log("connected to mongo");
+// });
 
 // PORT
 app.listen(PORT, () => {
-  console.log('listening...')
-})
+  console.log("listening...");
+});
