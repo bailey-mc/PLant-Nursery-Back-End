@@ -41,6 +41,7 @@ app.post('/plantnursery', (req, res) => {
 // read route
 app.get('/plantnursery', (req, res) => {
   Plant.find({}, (err, foundPlants) => {
+    res.send('/plantnursery')
     res.json(foundPlants)
   })
 })
