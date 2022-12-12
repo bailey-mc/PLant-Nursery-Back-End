@@ -46,8 +46,6 @@ app.post('/plantnursery/new', (req, res) => {
   })
 })
 
-
-
 // read route
 app.get('/plantnursery', (req, res) => {
   Plant.find({}, (err, foundPlants) => {
