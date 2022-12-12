@@ -33,6 +33,9 @@ app.use(cors());
 app.post('/plantnursery/new', (req, res) => {
   Plant.create(req.body, (err, createdPlant) => {
     res.json(createdPlant)
+    if (err){
+      console.log(err);
+    }
   })
 })
 
@@ -47,7 +50,7 @@ app.get('/', (req, res) => {
 app.get('/plantnursery', (req, res) => {
   Plant.find({}, (err, foundPlants) => {
     console.log(foundPlants);
-    res.send('/plantnursery')
+    // res.send('/plantnursery')
     res.json(foundPlants)
   })
 })
