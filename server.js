@@ -1,15 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config()
 const Plant = require('./models/plantSchema.js')
 
 const app = express();
 
 //port stuff for heroku
-let PORT = 3001;
-if(process.env.PORT){
-	PORT = process.env.PORT
-}
+// let PORT = 3001;
+// if(process.env.PORT){
+// 	PORT = process.env.PORT
+// }
+let PORT = process.env.PORT;
+
 
 //middleware
 app.use(express.json());
@@ -43,6 +46,7 @@ app.get('/', (req, res) => {
 // read route
 app.get('/plantnursery', (req, res) => {
   Plant.find({}, (err, foundPlants) => {
+    console.log(foundPlants);
     res.send('/plantnursery')
     res.json(foundPlants)
   })
