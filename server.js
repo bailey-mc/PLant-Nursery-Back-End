@@ -11,7 +11,7 @@ const app = express();
 // if(process.env.PORT){
 // 	PORT = process.env.PORT
 // }
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT ;
 
 
 const whitelist = ["http://localhost:3000"]
