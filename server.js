@@ -15,7 +15,6 @@ let PORT = process.env.PORT || 3001;
 
 //middleware
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
@@ -85,10 +84,9 @@ app.get('/seed', (req, res) => {
 // })
 
 // LISTENER
-mongoose.connect('mongodb://localhost:27017/plantnursery-MERN')
-mongoose.connection.once('open', () => {
-  console.log('connected to mongosh...')
-});
+mongoose.connect('mongodb+srv://musiclover:bobdylaN%2196@mymusic.wef1hdo.mongodb.net/?retryWrites=true&w=majority', ()=>{
+	console.log('connected to mongo');
+})
 
 // PORT
 app.listen(PORT, () => {
