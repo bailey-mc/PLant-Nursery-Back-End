@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config()
-const Plant = require('./models/plantSchema.js')
+// const Plant = require('./models/plantSchema.js')
 
 
 //port stuff for heroku
@@ -18,7 +18,18 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//////////////////////////
+//CONTROLLERS
+////////////////////////
+const plantController = require('./controllers/plantroutes')
+app.use('/plantnursery', plantController)
 
+///////////////////////////
+//ROUTES
+///////////////////////////
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+})
 
 // // seed route
 // const plantSeed = require('./models/plantData.js')
@@ -35,37 +46,37 @@ app.use(cors());
 //   res.send('hi')
 // })
 
-// create route
-app.post('/plantnursery/new', (req, res) => {
-  Plant.create(req.body, (err, createdPlant) => {
-    res.json(createdPlant)
+// // create route
+// app.post('/plantnursery/new', (req, res) => {
+//   Plant.create(req.body, (err, createdPlant) => {
+//     res.json(createdPlant)
     
-  })
-})
+//   })
+// })
 
-// read route
-app.get('/plantnursery', (req, res) => {
-  Plant.find({}, (err, foundPlants) => {
-    console.log(foundPlants);
-    // res.send('/plantnursery')
-    res.json(foundPlants)
-  })
-})
+// // read route
+// app.get('/plantnursery', (req, res) => {
+//   Plant.find({}, (err, foundPlants) => {
+//     console.log(foundPlants);
+//     // res.send('/plantnursery')
+//     res.json(foundPlants)
+//   })
+// })
 
-// update route
-app.put('/plantnursery/:id', (req, res) => {
-  Plant.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPlant) => {
-    res.json(updatedPlant);
-  })
-})
+// // update route
+// app.put('/plantnursery/:id', (req, res) => {
+//   Plant.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPlant) => {
+//     res.json(updatedPlant);
+//   })
+// })
 
-// delete route
-app.delete('/plantnursery/:id', (req, res) => {
-  console.log(req.params)
-  Plant.findByIdAndDelete(req.params.id, (err, deletedPlant) => {
-    res.json(deletedPlant);
-  })
-})
+// // delete route
+// app.delete('/plantnursery/:id', (req, res) => {
+//   console.log(req.params)
+//   Plant.findByIdAndDelete(req.params.id, (err, deletedPlant) => {
+//     res.json(deletedPlant);
+//   })
+// })
 
 // LISTENER
 mongoose.connect('mongodb://localhost:27017/plantnursery-MERN')
