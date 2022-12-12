@@ -32,6 +32,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 })
 
+//error message for page that does not exist
+app.use((req,res, next)=> {
+  res.send('404 page not found')
+})
+
 // seed route
 const plantSeed = require('./models/plantData.js')
 
