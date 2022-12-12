@@ -31,6 +31,7 @@ app.get('/seed', (req, res) => {
   })
 })
 
+
 // create route
 app.post('/plantnursery', (req, res) => {
   Plant.create(req.body, (err, createdPlant) => {
