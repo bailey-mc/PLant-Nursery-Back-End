@@ -4,7 +4,6 @@ const cors = require('cors');
 require('dotenv').config()
 const Plant = require('./models/plantSchema.js')
 
-const app = express();
 
 //port stuff for heroku
 // let PORT = 3001;
@@ -15,6 +14,7 @@ let PORT = process.env.PORT;
 
 
 //middleware
+const app = express();
 app.use(express.json());
 app.use(cors());
 
