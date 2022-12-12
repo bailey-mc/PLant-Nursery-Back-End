@@ -38,13 +38,13 @@ app.use((req,res, next)=> {
 })
 
 // seed route
-// const plantSeed = require('./models/plantData.js')
+const plantSeed = require('./models/plantData.js')
 
-// app.get('/seed', (req, res) => {
-//   Plant.create(plantSeed, (error, data) => {
-//     res.send('database seeded with: ' + data)
-//   })
-// })
+app.get('/seed', (req, res) => {
+  Plant.create(plantSeed, (error, data) => {
+    res.send('database seeded with: ' + data)
+  })
+})
 
 //route for heroku
 // app.get('/', (req, res) => {
