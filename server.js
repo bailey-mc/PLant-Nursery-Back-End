@@ -29,6 +29,13 @@ app.use(cors());
 //   })
 // })
 
+//route for heroku
+app.get('/', (req, res) => {
+  console.log('hiii');
+  res.send('hi')
+  
+})
+
 // create route
 app.post('/plantnursery/new', (req, res) => {
   Plant.create(req.body, (err, createdPlant) => {
@@ -39,12 +46,7 @@ app.post('/plantnursery/new', (req, res) => {
   })
 })
 
-//route for heroku
-app.get('/', (req, res) => {
-  console.log('hiii');
-  res.send('hi')
-  
-})
+
 
 // read route
 app.get('/plantnursery', (req, res) => {
