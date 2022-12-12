@@ -2,6 +2,9 @@
 FULLSTACK MERN APP
 An app used to list different types of plants for sale.
 
+## Difficulties I ran into:
+- I couldn't add a payment to my Heroku so Bailey had to upload the back end onto her Heroku.
+
 ## Features of the app
 - All the plants are displayed upon page loading.
 
