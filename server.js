@@ -1,8 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
-const Plant = require("./models/plantSchema.js");
+const express = require('express');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override')
+const cors = require('cors');
+require('dotenv').config()
+// const Plant = require('./models/plantSchema.js')
+
 
 //port stuff for heroku
 // let PORT = 3001;
@@ -14,13 +16,17 @@ let PORT = process.env.PORT || 3001;
 //middleware
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'))
 app.use(cors());
 
 //////////////////////////
 //CONTROLLERS
 ////////////////////////
-const plantController = require("./controllers/plantroutes");
-app.use("/plantnursery", plantController);
+const plantController = require('./controllers/plantroutes')
+app.use('/plantnursery', plantController)
+const usersController = require('./controllers/users')
+app.use('/users', usersController)
 
 ///////////////////////////
 //ROUTES
@@ -29,52 +35,21 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// seed route
-const plantSeed = require("./models/plantData.js");
+// // seed route
+// const plantSeed = require("./models/plantData.js");
 
-app.get("/seed", (req, res) => {
-  Plant.create(plantSeed, (error, data) => {
-    res.send("database seeded with: " + data);
-  });
-});
-
-//route for heroku
-// app.get('/', (req, res) => {
-//   console.log('hiii');
-//   res.send('hi')
-// })
-
-// // create route
-// app.post('/plantnursery/new', (req, res) => {
-//   Plant.create(req.body, (err, createdPlant) => {
-//     res.json(createdPlant)
-
+// app.get('/seed', (req, res) => {
+//   Plant.create(plantSeed, (error, data) => {
+//     res.send('database seeded with: ' + data)
 //   })
 // })
 
-// // read route
-// app.get('/plantnursery', (req, res) => {
-//   Plant.find({}, (err, foundPlants) => {
-//     console.log(foundPlants);
-//     // res.send('/plantnursery')
-//     res.json(foundPlants)
-//   })
-// })
 
-// // update route
-// app.put('/plantnursery/:id', (req, res) => {
-//   Plant.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPlant) => {
-//     res.json(updatedPlant);
-//   })
-// })
 
-// // delete route
-// app.delete('/plantnursery/:id', (req, res) => {
-//   console.log(req.params)
-//   Plant.findByIdAndDelete(req.params.id, (err, deletedPlant) => {
-//     res.json(deletedPlant);
-//   })
-// })
+//error message for page that does not exist
+// app.use((req, res, next) => {
+//   res.send("404 page not found");
+// });
 
 //error message for page that does not exist
 // app.use((req, res, next) => {
@@ -82,15 +57,16 @@ app.get("/seed", (req, res) => {
 // });
 
 // LISTENER
-mongoose.connect(
-  "mongodb+srv://musiclover:bobdylaN%2196@mymusic.wef1hdo.mongodb.net/?retryWrites=true&w=majority",
-  () => {
-    console.log("connected to mongo");
-  }
-);
-// mongoose.connect("mongodb://localhost:27017/plantnursery-MERN", () => {
-//   console.log("connected to mongo");
-// });
+mongoose.connect('mongodb+srv://emonga:aBB4E9oTaQ48nM&Y@cluster0.0eubsxh.mongodb.net/?retryWrites=true&w=majority', 
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+},
+()=>{
+	console.log('connected to mongo');
+})
 
 // PORT
 app.listen(PORT, () => {
