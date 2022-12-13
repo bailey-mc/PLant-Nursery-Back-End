@@ -13,7 +13,6 @@ require('dotenv').config()
 // }
 let PORT = process.env.PORT || 3001;
 
-
 //middleware
 const app = express();
 app.use(express.json());
@@ -32,17 +31,12 @@ app.use('/users', usersController)
 ///////////////////////////
 //ROUTES
 ///////////////////////////
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
-
-//error message for page that does not exist
-app.use((req,res, next)=> {
-  res.send('404 page not found')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 // // seed route
-// const plantSeed = require('./models/plantData.js')
+// const plantSeed = require("./models/plantData.js");
 
 // app.get('/seed', (req, res) => {
 //   Plant.create(plantSeed, (error, data) => {
@@ -51,6 +45,16 @@ app.use((req,res, next)=> {
 // })
 
 
+
+//error message for page that does not exist
+// app.use((req, res, next) => {
+//   res.send("404 page not found");
+// });
+
+//error message for page that does not exist
+// app.use((req, res, next) => {
+//   res.send("404 page not found");
+// });
 
 // LISTENER
 mongoose.connect('mongodb+srv://emonga:aBB4E9oTaQ48nM&Y@cluster0.0eubsxh.mongodb.net/?retryWrites=true&w=majority', 
@@ -66,5 +70,5 @@ mongoose.connect('mongodb+srv://emonga:aBB4E9oTaQ48nM&Y@cluster0.0eubsxh.mongodb
 
 // PORT
 app.listen(PORT, () => {
-  console.log('listening...')
-})
+  console.log("listening...");
+});
