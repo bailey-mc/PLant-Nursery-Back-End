@@ -5,6 +5,7 @@ const cors = require('cors');
 require('dotenv').config()
 // const Plant = require('./models/plantSchema.js')
 
+const db = mongoose.connection
 
 //port stuff for heroku
 // let PORT = 3001;
@@ -61,12 +62,14 @@ mongoose.connect('mongodb+srv://emonga:aBB4E9oTaQ48nM&Y@cluster0.0eubsxh.mongodb
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
+
 },
 ()=>{
 	console.log('connected to mongo');
 })
+
+db.on('error', (err) => console.log(err.message + ' is mongod not running?'))
+db.on('disconnected', () => console.log('mongo disconnected'))
 
 // PORT
 app.listen(PORT, () => {
