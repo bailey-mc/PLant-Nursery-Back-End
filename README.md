@@ -1,6 +1,8 @@
 # Plant-Nursery-Back-End
 FULLSTACK MERN APP
-An app used to list different types of plants for sale.
+## An app used to list different types of plants for sale.
+
+---
 
 ## Struggles:
 - I couldn't add the Privacy card to my Heroku so Bailey had to deploy the back end server onto her Heroku.
@@ -19,10 +21,12 @@ mongoose.connect('[MONGO_CONNECTION_STRING]', ()=>{
 	console.log('connected to mongo');
 })
 ```
+---
 
-## Features of the app
+## Features of the app:
 - All the plants are displayed upon page loading.
 
 - Able to edit/update or delete an existing listing.
 
 - Toggles to show all plants or add a new listing at the top of the page. 
+--- 
