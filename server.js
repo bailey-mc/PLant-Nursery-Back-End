@@ -36,14 +36,14 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// // seed route
-// const plantSeed = require("./models/plantData.js");
+// seed route
+const plantSeed = require("./models/plantData.js");
 
-// app.get('/seed', (req, res) => {
-//   Plant.create(plantSeed, (error, data) => {
-//     res.send('database seeded with: ' + data)
-//   })
-// })
+app.get('/seed', (req, res) => {
+  Plant.create(plantSeed, (error, data) => {
+    res.send('database seeded with: ' + data)
+  })
+})
 
 
 
