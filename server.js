@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override')
 const cors = require('cors');
 require('dotenv').config()
-// const Plant = require('./models/plantSchema.js')
+const Plant = require('./models/plantSchema.js')
 
 const db = mongoose.connection
 
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// seed route
+// // seed route
 const plantSeed = require("./models/plantData.js");
 
 app.get('/seed', (req, res) => {
