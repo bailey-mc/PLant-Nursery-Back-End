@@ -36,6 +36,10 @@ mongoose.connect('[MONGO_CONNECTION_STRING]', ()=>{
 
 - The filter route took Bailey a while to figure out, she could not figure out how to pull the req.params.key value into the mongoose query. First she tried sestting that value to a variable and pulling it in that way... it did not work. Then she set up .find() with an $or operator, and hard coded all of the different key options and then pulled in the value thru req.params.value. It worked because all of our values are different, but it wasn't ideal. Eventually, Alexis showed her that you can wrap a key in square brackets and mongoose will be happy.
 
+- Working with git... learning how to manually merge, how to read pull requests, how to communicate with your partner about what you are working on and where, making sure that you are not working on the same document at the same time.
+
+- Reading and familiarizing yourself with your partner's code. First you have to understand what they did and why. Then you have to make sure any of your own changes do not mess up their work. There was definitely a stuble or two in this department.
+
 ## Features of the app:
 - All the plants are displayed upon page loading.
 
