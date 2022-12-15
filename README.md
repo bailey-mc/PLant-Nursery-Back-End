@@ -2,7 +2,7 @@
 ## FULLSTACK MERN APP
 By Bailey McDonald and Emon Li
 
-## An app used to list different types of plants for sale.
+## An app used to list a plant nursery's inventory
 - Backend hosted at https://ancient-lowlands-69118.herokuapp.com/
 - Backend GitHub Repo https://github.com/texasmami/PLant-Nursery-Back-End
 - Frontend hosted at https://sunshine-nursery.netlify.app/
@@ -46,7 +46,7 @@ Because mongoose was closing after the first connection, the site was breaking a
 - Toggles to show all plants or add a new listing at the top of the page. 
 
 - Users can filter by a variety of categories to populate the page with the types of plants they are looking for. If a category is empty, a message pops up telling the user to check back later.
---- 
+
 
 ## Unsolved Problems
 - Granting different permissions to different types of users. Right now the only barrier to editing the contents of the site is creating an account and logging in. We'd like to figure out how to give administrative permissions, so that only the shop owners can edit the content.
