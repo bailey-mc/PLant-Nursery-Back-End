@@ -50,4 +50,24 @@ router.delete("/:id", (req, res) => {
   });
 });
 
+//serach route
+
+router.post("/:value", (req, res) => {
+  // console.log(req.params.key + ' key ' + req.params.value + ' value');
+  //   let key= req.params.key
+  //   let value= req.params.value
+  Plant.find(
+    {$or: [
+      {"type" : req.params.value},
+      {"temperature" : req.params.value},
+      {"requiresLight" : req.params.value},
+      {"waterAmount" : req.params.value}
+    ]} ,
+    (err, foundPlants) => {
+    console.log(foundPlants);
+    
+    res.json(foundPlants);
+  })
+})
+
 module.exports = router;
